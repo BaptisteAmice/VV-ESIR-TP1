@@ -27,28 +27,34 @@ For the function in the title of the issue, the new tests are entitled "testReta
 source : https://issues.apache.org/jira/projects/COLLECTIONS/issues/COLLECTIONS-813?filter=doneissues
 
 
--------------
-. Read the paper and briefly explain what are the concrete experiments they perform, what are the requirements for these experiments, what are the variables they observe and what are the main results they obtained. Is Netflix the only company performing these experiments? Speculate how these experiments could be carried in other organizations in terms of the kind of experiment that could be performed and the system variables to observe during the experiments.
--------------
-
 3. The concrete experiments performed by Netflix revolve around Chaos Engineering and are the following:
 
 - Chaos Monkey: Randomly terminates virtual machine instances that host production services during normal working hours. 
 
 - Chaos Kong: Simulates the failure of an entire Amazon EC2 region.
 
-- Failure Injection Testing (FIT) exercises: Cause requests between Netflix services to fail deliberately and verify that the system degrades gracefully.
+- Failure Injection Testing (FIT) exercises: Cause requests between Netflix services to fail deliberately.
 
-REQUIREMENTS: ?????????????
+For each of these experiments, the system needs to handle the failure and continue to operate correctly. 
+This kind if experiments is only possible on distributed systems.
+In order to adopt the described system perspective, the system needs to have been deployed into production some time ago and to have active users.
 
-VARIABLES : ???
+Seeing the system as a whole entity, allows to observe the `steady­state behavior`, wich can be affected by users traffic, engineers interventions, and failures.
+The variable mesured by Netflix aren't the match of the specification, but rather the observation of if the system is still working as intended, availibility and how much the users are complaining about a failure. During an experiment, Netflix just need to measure the difference in steady state behavior between the normal state and the state with the failure injected.
 
-main results : ????
+From these experiments, two kinds of results can be obtained:
+- The system is resilient and the experiment has no impact on the users. We can then have more confidence in our system and its ability to handle failures.
+- A weakness has been uncovered and should be fixed. The experiment has helped to find a path for improvement.
 
-how these experiments could be carried in other organizations : ???
+Netflix is not the only company performing this kind of experiments. In fact, and as stated in the paper: "Amazon, Google, Microsoft, and Facebook, were applying similar techniques to test the resilience of their own systems".
 
-//TODO AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+Chaos monkey and FIT could be carried in other organization using distributed systems and microservices.
+However, Chaos Kong is only possible and relevant for services deployed over multiple regions.
 
+Examples of variables that could be relevant for any kind of system using Chaos Engineering would be:
+- Users retention time
+- Latency
+- Availability
 
 4.
 
@@ -66,6 +72,21 @@ In fact, to our mind, we could say that WebAssembly implementation tests should 
 However, the more these implementations will build over the standard, the more they will need to be tested for validation purposes.
 
 
-5.
-TODO AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
+5.
+Mechanized specification of WebAssembly using the Isabelle proof assistant has many advantages:
+It allowed formally proving properties of the WebAssembly language, such as type soundness.
+Maintaining "eyeball closeness" to the original specification helped relate proven properties back to the original text.
+The process of developing proofs uncovered issues in the original specification that could be addressed, improving the specification.
+The mechanized specification can guarantee properties like type soundness in a way not possible for a "light-weight" specification.
+
+Yes, it improves on the original WebAssembly formal specification. This proof has highlighted
+several problems with the official WebAssembly specification, and thus has influenced its development.
+
+In addition to the mechanized specification itself, there are two other verified artifacts from the specification that derived from this mechanized specification :
+A verified executable interpreter that implements the WebAssembly semantics.
+A verified type checker that checks WebAssembly programs for type safety.
+
+The author used the Isabelle proof assistant to mechanically verify key properties of the WebAssembly specification.
+
+No, the mechanized specification didn’t remove the need for testing. While it helped improve the original specification and provided additional verified artifacts like a type checker, testing stay important for fully validating implementations.
