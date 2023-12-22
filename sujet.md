@@ -47,14 +47,25 @@ main results : ????
 
 how these experiments could be carried in other organizations : ???
 
-//TODO
+//TODO AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
 
 4.
 
-The formal specification of WebAssembly allows to avoid the ambiguity of the natural language and to have a semantic easier to implement across several browsers. It allows consistency across their implementations and thus compatibility.
+The formal specification of WebAssembly allows it to be independant from the web and JavaScript environments.
+Web assembly is more of a standard and can be used in different environments, not only the web. 
+It can be used to implement low or high level languages (only low level languages are currently implemented). 
+
+It is less ambiguous than natural languages wich will make it easier to implement across several browsers and more reliable. It also allows consistency across implementations and thus compatibility.
+In short, it allows what the authors of the paper call a "notably clean design".
+
+The expected behavior has already been stated (like in test driven development) so it is easier to test the implementation of the specification.
+Test are easier to determine and to write because the specification is more precise and less ambiguous. 
+Testing is evidently still necessary to ensure that the implementation is correct.
+In fact, to our mind, we could say that WebAssembly implementation tests should mainly focused on the verification side of testing (to verify that the implementation is correct) rather than the validation side (to verify that the implementation is what is needed). 
+However, the more these implementations will build over the standard, the more they will need to be tested for validation purposes.
 
 
-The expected behavior is already stated (like in test driven development) so it is easier to test the implementation of the specification.
+5.
+TODO AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
-Test are easier to determine and to write because the specification is more precise and less ambiguous. They //TOOOODOOOO
