@@ -90,3 +90,9 @@ A verified type checker that checks WebAssembly programs for type safety.
 The author used the Isabelle proof assistant to mechanically verify key properties of the WebAssembly specification.
 
 No, the mechanized specification didn’t remove the need for testing. While it helped improve the original specification and provided additional verified artifacts like a type checker, testing stay important for fully validating implementations.
+
+------------------------------
+------------------------------
+Authors:
+- Baptiste AMICE
+- Ulysse-Néo LARTIGAUD
